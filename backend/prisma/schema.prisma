@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Foody{
+  id String @id @default(uuid())
+  username String @unique()
+  password String
+  // phone String @unique()
+  email String @unique()
+  city City
+}
+
+model Chef{
+  id String @id @default(uuid())
+  username String @unique()
+  password String
+  // phone String @unique()
+  projectName String
+  email String @unique()
+  city City
+  item Item[]
+}
+
+model Item{
+  id String @id @default(uuid()) 
+  createAt DateTime @default(now())
+  title String
+  description String
+  price String
+  image String ?
+  city City 
+  chef_id String
+  chef Chef @relation(fields: [chef_id],references: [id])
+  productType Type
+  
+}
+
+enum City{
+  Riyadh
+  Jeddah
+  Dammam
+}
+enum Type {
+  Main_dishes
+  Entrees
+  Traditional
+  Dessert
+  Healthy
+  Drink
+}
+
+
