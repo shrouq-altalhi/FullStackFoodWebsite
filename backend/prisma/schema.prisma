@@ -48,7 +48,7 @@ enum City{
   Dammam
 }
 enum Type {
-  Main_dishes
+  MainDishe
   Entrees
   Traditional
   Dessert

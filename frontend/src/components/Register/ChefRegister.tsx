@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../../navbar/Navbar";
 
 const ChefRegister = () => {
   const [username, setUsername] = React.useState("");
@@ -64,8 +64,8 @@ const ChefRegister = () => {
     }
   };
   return (
-    <Box bg="white" color="black" >
-      <Navbar/>
+    <Box bg="white" color="black">
+      <Navbar />
       <Flex
         justifyContent="center"
         alignItems="center"

@@ -19,7 +19,7 @@ export const protect = (req: Request, res: Response, next: NextFunction) => {
     const user = jwt.verify(
       token,
       process.env.JWT_SECRET as string
-    ) as IUser;
+    ) as IUser ;
 
     res.locals.user = user;
 

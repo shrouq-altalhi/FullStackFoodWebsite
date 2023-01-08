@@ -21,21 +21,18 @@ export const addNewItem = z.object({
     }),
 
     productType: z.enum(
-      [
-        "Main_dishes",
-        "Entrees",
-        "Traditional",
-        "Dessert",
-        "Dreinks",
-        "Healthy",
-      ],
-
+      ["MainDishe", "Entrees", "Traditional", "Dessert", "Healthy", "Drink"],
       {
-        required_error: "type is required !",
-        invalid_type_error: "type must be a string",
+        required_error: "product type is required !",
+        invalid_type_error: "product type must be a string",
       }
     ),
     image: z.string().nullish(),
+    city: z.enum(["Riyadh", "Jeddah", "Dammam"], {
+      required_error: "City is required !",
+      invalid_type_error:
+        "City must be a one of this city Riyadh, Jeddah, Dammam",
+    }),
   }),
 });
 
@@ -46,7 +43,7 @@ export const UpdatePostItem = z.object({
         required_error: "Title is required !",
         invalid_type_error: "Title must be a string",
       })
-      .min(6, "Title must be more than 6 char"),
+      .min(3, "Title must be more than 6 char"),
 
     description: z
       .string({
@@ -54,20 +51,25 @@ export const UpdatePostItem = z.object({
         invalid_type_error: "description must be a string",
       })
       .min(10, "description must be more than 10 char"),
-    price: z.number({
+    price: z.string({
       required_error: "price is required !",
-      invalid_type_error: "price must be a Number",
+      invalid_type_error: "price must be a string",
     }),
 
-    type: z.enum([
-      "Main_dishes",
+    productType: z.enum([
+      "MainDishe",
       "Entrees",
       "Traditional",
       "Dessert",
-      "Dreinks",
       "Healthy",
+      "Drink",
     ]),
     image: z.string().nullish(),
+    city: z.enum(["Riyadh", "Jeddah", "Dammam"], {
+      required_error: "City is required !",
+      invalid_type_error:
+        "City must be a one of this city Riyadh, Jeddah, Dammam",
+    }),
   }),
 
   params: z.object({
@@ -78,7 +80,7 @@ export const UpdatePostItem = z.object({
   }),
 });
 
-export const DelettItem = z.object({
+export const DeleteItem = z.object({
   params: z.object({
     itemid: z.string({
       required_error: "id is required !",
@@ -89,4 +91,4 @@ export const DelettItem = z.object({
 
 export type UpdatePostItemType = z.infer<typeof UpdatePostItem>["params"];
 
-export type DelettItemType = z.infer<typeof DelettItem>["params"];
+export type DeleteItemType = z.infer<typeof DeleteItem>["params"];

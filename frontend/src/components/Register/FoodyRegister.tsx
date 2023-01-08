@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../../navbar/Navbar";
 
 const FoodyRegister = () => {
   const [username, setUsername] = React.useState("");
@@ -62,7 +62,7 @@ const FoodyRegister = () => {
     }
   };
   return (
-    <Box bg="white" color="black" >
+    <Box bg="white" color="black">
       <Navbar />
       <Flex
         justifyContent="center"

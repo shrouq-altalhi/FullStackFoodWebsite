@@ -13,10 +13,9 @@ import {
   TabPanel,
   useToast,
 } from "@chakra-ui/react";
-import Nav from "../navbar/Navbar";
+import Nav from "../../navbar/Navbar";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Footer from "./Footer";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -52,7 +51,7 @@ const Login = () => {
         position: "top",
       });
       localStorage.setItem("token", data.token);
-      navigate("/item");
+      navigate("/additem");
     } catch (error) {
       toast({
         title: "Server Error!",

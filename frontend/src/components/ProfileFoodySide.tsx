@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -15,46 +15,29 @@ import {
   Icon,
 } from "@chakra-ui/react";
 
-// import { ChatIcon } from "@chakra-ui/icons";
-import Navbar from "../navbar/Navbar";
-import { useParams } from "react-router-dom";
+// import Navbar from './Navbar'
+import { ChatIcon } from "@chakra-ui/icons";
 // import ChatFoody from '../chat/ChatFoody'
 
-export default function ProfileFoodySaid() {
-    const [item, setItem] = useState<string[]>([]);
-  const { name } = useParams();
-
-  const fetchItem = async () => {
-    const request = await fetch("/api/v1/additem/" + name, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    });
-    const data = await request.json()
-    setItem(data)
-  };
-  useEffect(() => {
-    fetchItem()
-  }, []);
-
+export default function ProfileFoodySide() {
   return (
-    <Box bg="white" h="100vh" color="black">
-      <Navbar />
+    <div>
+      {/* <Navbar/> */}
       {/* ------------------------------------------------------------------------------------------------- */}
       <Flex mt="2%" justifyContent="flex-start">
         <Image src="ChfeLogo.png" w="200" h="200"></Image>
 
         <Flex
-          width="20%"
+          background="CEDABA"
+          width="50%"
           height="100"
           fontFamily="Xanh Mono"
           fontSize="2xl"
           borderWidth="1px"
           borderRadius={"100"}
           backgroundColor="#CEDABA"
-          mt="50"
-          justifyContent="center"
+          mt="30"
+          justify="space-around"
         >
           <Text mt="30">Welcome in Family Cook lover </Text>
 
@@ -83,7 +66,7 @@ export default function ProfileFoodySaid() {
           alt="Caffe Latte"
         />
 
-        <Stack color="black">
+        <Stack>
           <CardBody>
             {/* <HStack spacing="150"> */}
             <Flex justifyContent="space-between">
@@ -107,9 +90,6 @@ export default function ProfileFoodySaid() {
           </CardFooter>
         </Stack>
       </Card>
-      <Box mt="5" bg="#788A5C" color="white" textAlign="center">
-        ©Famaliyfood station . All rights reserved.
-      </Box>
-    </Box>
+    </div>
   );
 }
